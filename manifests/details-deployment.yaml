@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: details
+spec:
+  selector:
+    matchLabels:
+      app: details
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: details
+    spec:
+      containers:
+        - name: details
+          image: uhziel/details
+          resources:
+            requests:
+              memory: "70Mi"
+              cpu: "100m"
+            limits:
+              memory: "170Mi"
+          ports:
+            - containerPort: 2002
+      nodeSelector:
+        kubernetes.io/os: linux

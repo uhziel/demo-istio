@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productpage
+spec:
+  selector:
+    matchLabels:
+      app: productpage
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: productpage
+    spec:
+      containers:
+        - name: productpage
+          image: uhziel/productpage
+          args:
+            - "-details-host"
+            - "details"
+            - "-reviews-host"
+            - "reviews"
+          resources:
+            requests:
+              memory: "70Mi"
+              cpu: "100m"
+            limits:
+              memory: "170Mi"
+          ports:
+            - containerPort: 2000
+      nodeSelector:
+        kubernetes.io/os: linux

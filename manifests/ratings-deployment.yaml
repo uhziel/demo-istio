@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings
+spec:
+  selector:
+    matchLabels:
+      app: ratings
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ratings
+    spec:
+      containers:
+        - name: ratings
+          image: uhziel/ratings
+          resources:
+            requests:
+              memory: "70Mi"
+              cpu: "100m"
+            limits:
+              memory: "170Mi"
+          ports:
+            - containerPort: 2003
+      nodeSelector:
+        kubernetes.io/os: linux

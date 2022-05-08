@@ -6,11 +6,13 @@ spec:
   selector:
     matchLabels:
       app: ratings
+      version: v1
   replicas: 1
   template:
     metadata:
       labels:
         app: ratings
+        version: v1
     spec:
       containers:
         - name: ratings

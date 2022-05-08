@@ -9,3 +9,4 @@ spec:
   ports:
     - port: 2000
       targetPort: 2000
+      appProtocol: tcp
